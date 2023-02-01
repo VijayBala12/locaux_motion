@@ -28,11 +28,17 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 0, 94, 85),
+        leading: IconButton(
+          onPressed: () {
+            // Do something when the menu icon is pressed
+          },
+          icon: Icon(Icons.menu),
+          ),
         actions: [
           IconButton(
             onPressed: signUserOut,
             icon: Icon(Icons.logout),
-          )
+          ),
         ],
       ),
       body: Center(
