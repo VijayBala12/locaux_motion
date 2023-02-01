@@ -14,7 +14,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "781145982704-qg422i1pudg2idllg25puon9oniaut2k.apps.googleusercontent.com",
+          "client_id": "781145982704-ct3ergshsteppoap40c6vbiqqv67426n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.locaux_motion",
+            "certificate_hash": "6cf695cbbab86185ec379af0afd4eea56d051db6"
+          }
+        },
+        {
+          "client_id": "781145982704-9n88i2391ott4v79rqg0an8595jt2dsg.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -27,8 +35,15 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "781145982704-qg422i1pudg2idllg25puon9oniaut2k.apps.googleusercontent.com",
+              "client_id": "781145982704-9n88i2391ott4v79rqg0an8595jt2dsg.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "781145982704-43t23ok34anllsgkm1onpca3c9pkou05.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.locauxMotion"
+              }
             }
           ]
         }
