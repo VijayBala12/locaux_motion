@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "781145982704",
+    "project_id": "locaux-motion",
+    "storage_bucket": "locaux-motion.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:781145982704:android:0a17ea30dd213a223de435",
+        "android_client_info": {
+          "package_name": "com.example.locaux_motion"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "781145982704-qg422i1pudg2idllg25puon9oniaut2k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAR78B0uSGTb51XuE2nCprzEQxUIS-djCE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "781145982704-qg422i1pudg2idllg25puon9oniaut2k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

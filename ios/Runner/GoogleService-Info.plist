@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>781145982704-43t23ok34anllsgkm1onpca3c9pkou05.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.781145982704-43t23ok34anllsgkm1onpca3c9pkou05</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCijnabyWfE3fw7ILr98qdomNjarbm4mh4</string>
+	<key>GCM_SENDER_ID</key>
+	<string>781145982704</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.locauxMotion</string>
+	<key>PROJECT_ID</key>
+	<string>locaux-motion</string>
+	<key>STORAGE_BUCKET</key>
+	<string>locaux-motion.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:781145982704:ios:6e3c35dcc3e6a5633de435</string>
+</dict>
+</plist>
