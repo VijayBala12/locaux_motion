@@ -13,7 +13,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
   final Completer<GoogleMapController> _controller = Completer();
-  static final CameraPosition _kGooglePlex = CameraPosition(
+  static final CameraPosition _initialCameraPosition = CameraPosition(
     target: LatLng(48.692055, 6.184417),
     zoom: 15,
   );
@@ -50,12 +50,41 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      body: GoogleMap(
-        mapType: MapType.normal,
-        initialCameraPosition: _kGooglePlex,
-        onMapCreated: (GoogleMapController controller) {
-          _controller.complete(controller);
-        },
+      body: Stack(
+        children: [
+          GoogleMap(
+            mapType: MapType.normal,
+            initialCameraPosition: _initialCameraPosition,
+            onMapCreated: (GoogleMapController controller) {
+              _controller.complete(controller);
+            },
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 25, left: 20, right: 20),
+            child: Container(
+              height: 50,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                    // color: Colors.grey[200],
+                    offset: Offset(0, 10),
+                    blurRadius: 15,
+                  ),
+                ],
+              ),
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: "Rechercher",
+                  border: InputBorder.none,
+                  contentPadding: EdgeInsets.only(left: 20, top: 15),
+                  suffixIcon: Icon(Icons.search),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
