@@ -1,5 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'dart:async';
+
 
 class HomePage extends StatefulWidget {
   HomePage({super.key});
@@ -9,7 +12,11 @@ class HomePage extends StatefulWidget {
 }
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
-
+  final Completer<GoogleMapController> _controller = Completer();
+  static final CameraPosition _kGooglePlex = CameraPosition(
+    target: LatLng(48.692055, 6.184417),
+    zoom: 15,
+  );
   // sign user out method
   void signUserOut() {
     FirebaseAuth.instance.signOut();
@@ -28,6 +35,8 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 0, 94, 85),
+        title : Text("Recherche d'itinéraire"),
+        centerTitle: true,
         leading: IconButton(
           onPressed: () {
             // Do something when the menu icon is pressed
@@ -41,20 +50,18 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      body: Center(
-          child: Text(
-        "Connecté en tant que: " + user.email!,
-        style: TextStyle(fontSize: 20),
-      )),
+      body: GoogleMap(
+        mapType: MapType.normal,
+        initialCameraPosition: _kGooglePlex,
+        onMapCreated: (GoogleMapController controller) {
+          _controller.complete(controller);
+        },
+      ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.route),
             label: 'Itinéraire',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle),
-            label: 'Profil',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.map),
@@ -68,9 +75,13 @@ class _HomePageState extends State<HomePage> {
             icon: Icon(Icons.eco_outlined),
             label: 'Suivi CO2',
           ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_circle),
+            label: 'Profil',
+          ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Color.fromARGB(255, 100, 143, 122),
+        selectedItemColor: Color.fromARGB(255, 0, 94, 85),
         unselectedItemColor: Colors.black,
         onTap: _onItemTapped,
       ),

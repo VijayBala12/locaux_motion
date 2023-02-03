@@ -4,6 +4,9 @@
         android:label="locaux_motion"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+
+        <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyDMjPypclvyp5TyUZ6o3uHE5NF5YL9bgjo"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -20,6 +23,7 @@
               android:name="io.flutter.embedding.android.NormalTheme"
               android:resource="@style/NormalTheme"
               />
+           
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
