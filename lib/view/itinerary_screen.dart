@@ -19,32 +19,7 @@ class ItineraryScreen extends StatelessWidget {
               controller.mapsController.complete(googleMapsController);
             }
           },
-        ),
-        Padding(
-          padding: const EdgeInsets.only(top: 25, left: 20, right: 20),
-          child: Container(
-            height: 50,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: const [
-                BoxShadow(
-                  color: Colors.grey,
-                  offset: Offset(4, 4),
-                  blurRadius: 5,
-                ),
-              ],
-            ),
-            child: const TextField(
-              decoration: InputDecoration(
-                hintText: "Rechercher",
-                border: InputBorder.none,
-                contentPadding: EdgeInsets.only(left: 20, top: 15),
-                suffixIcon: Icon(Icons.search),
-              ),
-            ),
-          ),
-        ),
+        )
       ],
     );
   }
