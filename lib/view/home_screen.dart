@@ -1,3 +1,4 @@
+import 'package:easy_autocomplete/easy_autocomplete.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -6,6 +7,7 @@ import 'package:locaux_motion/view/search_place_screen.dart';
 import 'package:locaux_motion/view/views.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
+import '../model/place.dart';
 import 'CustomRadioButton.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -40,26 +42,29 @@ class HomeScreen extends StatelessWidget {
                           child: Container(),
                         )),
                       )),
-              body: controller.selectedTabIndex == 0 ? SlidingUpPanel(
-                controller: controller.panelController,
-                isDraggable: true,
-                panel: bottomSheetWidget(controller),
-                minHeight: 450,
-                maxHeight: Get.height,
-                borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(20),
-                    topRight: Radius.circular(20)),
-                defaultPanelState: PanelState.CLOSED,
-                body: GetBuilder<HomeController>(
-                    id: "body",
-                    builder: (controller) {
-                      return controller.pages[controller.selectedTabIndex];
-                    }),
-              ) : GetBuilder<HomeController>(
-                  id: "body",
-                  builder: (controller) {
-                    return controller.pages[controller.selectedTabIndex];
-                  }),
+              body: controller.selectedTabIndex == 0
+                  ? SlidingUpPanel(
+                      controller: controller.panelController,
+                      isDraggable: true,
+                      panel: bottomSheetWidget(controller),
+                      minHeight: 450,
+                      maxHeight: Get.height,
+                      borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(20),
+                          topRight: Radius.circular(20)),
+                      defaultPanelState: PanelState.CLOSED,
+                      body: GetBuilder<HomeController>(
+                          id: "body",
+                          builder: (controller) {
+                            return controller
+                                .pages[controller.selectedTabIndex];
+                          }),
+                    )
+                  : GetBuilder<HomeController>(
+                      id: "body",
+                      builder: (controller) {
+                        return controller.pages[controller.selectedTabIndex];
+                      }),
               bottomNavigationBar: GetBuilder<HomeController>(
                 id: "bottom_nav_bar",
                 builder: (controller) {
@@ -125,31 +130,33 @@ class HomeScreen extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-             // Get.to(() => const SearchPlaceScreen());
+              // Get.to(() => const SearchPlaceScreen());
             },
             child: Container(
-              height: 50,
-              width: Get.width,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: const [
-                  BoxShadow(
-                    color: Colors.grey,
-                    offset: Offset(0.0, 1.0), //(x,y)
-                    blurRadius: 6.0,
-                  ),
-                ],
-              ),
-              child: const TextField(
-                decoration: InputDecoration(
-                  hintText: "Rechercher",
-                  border: InputBorder.none,
-                  contentPadding: EdgeInsets.only(left: 20, top: 15),
-                  suffixIcon: Icon(Icons.search),
+                height: 50,
+                width: Get.width,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Colors.grey,
+                      offset: Offset(0.0, 1.0), //(x,y)
+                      blurRadius: 6.0,
+                    ),
+                  ],
                 ),
-              ),
-            ),
+                child: EasyAutocomplete(
+                        suggestions: getNames(),
+                        onChanged: (value) => print('onChanged value: $value'),
+                        onSubmitted: (value) =>
+                            print('onSubmitted value: $value'),
+                        decoration: const InputDecoration(
+                          hintText: "Rechercher",
+                          border: InputBorder.none,
+                          contentPadding: EdgeInsets.only(left: 20, top: 15),
+                          suffixIcon: Icon(Icons.search),
+                        ))),
           ),
           Stack(
             children: [
@@ -170,4 +177,12 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
+}
+
+List<String> getNames(){
+  List<String> names = [];
+  for (var element in places) {
+    names.add(element.name);
+  }
+  return names;
 }

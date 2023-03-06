@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:locaux_motion/model/option.dart';
 
