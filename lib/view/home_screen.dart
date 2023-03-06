@@ -4,7 +4,6 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:locaux_motion/controller/home_controller.dart';
 import 'package:locaux_motion/view/search_place_screen.dart';
 import 'package:locaux_motion/view/views.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 import 'CustomRadioButton.dart';
