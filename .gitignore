@@ -50,3 +50,5 @@ ios/Podfile
 macos/Podfile
 
 pubspec.lock
+macos/Flutter/GeneratedPluginRegistrant.swift
+windows/flutter/generated_plugins.cmake
