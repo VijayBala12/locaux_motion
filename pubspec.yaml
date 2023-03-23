@@ -40,6 +40,11 @@ dependencies:
   firebase_auth: ^4.2.5
   google_sign_in: ^5.4.2
   google_maps_flutter: ^2.2.3
+  sliding_up_panel: ^2.0.0+1
+  easy_autocomplete: ^1.6.0
+  smooth_star_rating_nsafe: ^1.0.0+1
+  like_button: ^2.0.5
+  get: ^4.6.5
 
 dev_dependencies:
   flutter_test:

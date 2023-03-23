@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:locaux_motion/pages/auth_page.dart';
+import 'package:get/get.dart';
+import 'package:locaux_motion/controller/home_controller.dart';
+import 'view/views.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 void main() async {
@@ -7,6 +9,9 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  Get.put(()=>HomeController());
+
   runApp(const MyApp());
 }
 
@@ -15,9 +20,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: AuthPage(),
+      home: HomeScreen(),
     );
   }
 }
