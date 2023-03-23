@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:locaux_motion/controller/home_controller.dart';
+import 'package:locaux_motion/view/place_screen.dart';
 import 'package:locaux_motion/view/search_place_screen.dart';
 import 'package:locaux_motion/view/views.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
@@ -147,16 +148,19 @@ class HomeScreen extends StatelessWidget {
                   ],
                 ),
                 child: EasyAutocomplete(
-                        suggestions: getNames(),
-                        onChanged: (value) => print('onChanged value: $value'),
-                        onSubmitted: (value) =>
-                            print('onSubmitted value: $value'),
-                        decoration: const InputDecoration(
-                          hintText: "Rechercher",
-                          border: InputBorder.none,
-                          contentPadding: EdgeInsets.only(left: 20, top: 15),
-                          suffixIcon: Icon(Icons.search),
-                        ))),
+                    suggestions: homeController.getNames(),
+                    onSubmitted: (value) => Get.to(() => const PlacesScreen(),
+                        arguments: homeController.getPlaceByName(value))?.then((value) {
+                          print("closed");
+                          homeController.updateSelectedTabIndex(1);
+                    }),
+                    onChanged: (value) => print(value),
+                    decoration: const InputDecoration(
+                      hintText: "Rechercher",
+                      border: InputBorder.none,
+                      contentPadding: EdgeInsets.only(left: 20, top: 15),
+                      suffixIcon: Icon(Icons.search),
+                    ))),
           ),
           Stack(
             children: [
@@ -177,12 +181,4 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
-}
-
-List<String> getNames(){
-  List<String> names = [];
-  for (var element in places) {
-    names.add(element.name);
-  }
-  return names;
 }

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:locaux_motion/model/option.dart';
+import 'package:locaux_motion/model/place.dart';
 import 'package:locaux_motion/view/account_screen.dart';
 import 'package:locaux_motion/view/emission_dashboard_screen.dart';
 import 'package:locaux_motion/view/itinerary_screen.dart';
@@ -70,5 +71,17 @@ class HomeController extends GetxController {
 
   logout() async {
     FirebaseAuth.instance.signOut();
+  }
+
+  List<String> getNames() {
+    List<String> names = [];
+    for (var element in places) {
+      names.add(element.name);
+    }
+    return names;
+  }
+
+  Place? getPlaceByName(String name) {
+    return places.firstWhereOrNull((element) => element.name == name);
   }
 }
